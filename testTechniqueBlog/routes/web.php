@@ -15,6 +15,14 @@ use \App\Http\Controllers\articleController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
-Route::get('/new', [articleController::class, 'new'])->name('new');
+
+Route::get('/index', [ArticleController::class, 'index'])->name('index');
+Route::get('/new', [ArticleController::class, 'displayNew'])->name('new');
+Route::post('/new', [ArticleController::class, 'new']);
+Route::post('/update/{article}', [ArticleController::class, 'update']);
+Route::get('/update/{article}', [ArticleController::class, 'displayUpdate'])->name('update');
+Route::get('/show/{article}', [ArticleController::class, 'show'])->name('show');
+Route::get('/delete/{article}', [ArticleController::class, 'delete'])->name('delete');
+
